@@ -6,14 +6,14 @@ app = Flask(__name__)
 
 @app.route('/ai', methods=['GET'])
 def chatgpt():
-    user, message = request.args.get('user'), request.args.get('message')
+    message = request.args.get('message')
     ai_response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": example_in},
                 {"role": "assistant", "content": example_response},
-                {"role": "user", "content": f'{user}: {message}'},
+                {"role": "user", "content": f'{message}'},
             ]
         )['choices'][0]['message']['content']
     return ai_response[:350] + '...' if len(ai_response) > 350 else ai_response

@@ -43,7 +43,7 @@ You can also use Docker to build and run the chatbot.
    docker run -it -p 8080:8080 steam-chatbot
    ```
 
-   This will start the chatbot on port 8080. You can test the chatbot by sending GET requests to `http://localhost:8080/ai?user=<username>&message=<message>`.
+   This will start the chatbot on port 8080. You can test the chatbot by sending GET requests to `http://localhost:8080/ai?&message=<message>`.
 
 ## Google Cloud (Optional)
 
@@ -72,10 +72,10 @@ For more information, you can check out this [link](https://cloud.google.com/run
 
 ## Nightbot
 
-To use the chatbot with Nightbot, you can create a custom command that sends a GET request to the chatbot URL with the `user` and `message` query parameters. For example, if your chatbot is running on Google Cloud Run, you can create a command with the following URL:
+To use the chatbot with Nightbot, you can create a custom command that sends a GET request to the chatbot URL with the `message` query parameters. For example, if your chatbot is running on Google Cloud Run, you can create a command with the following URL:
 
 ```
-MrDestructoid < $(urlfetch <url-to-api>/ai?user=$(querystring $(twitch $(user) "{{displayName}}"))&message=$(querystring))
+MrDestructoid < $(urlfetch <url-to-api>/ai?message=$(querystring))
 ```
 
 Replace `<url-to-api>` with the URL to your chatbot API.
