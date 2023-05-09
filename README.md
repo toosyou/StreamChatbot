@@ -72,10 +72,15 @@ For more information, you can check out this [link](https://cloud.google.com/run
 
 ## Nightbot
 
-To use the chatbot with Nightbot, you can create a custom command that sends a GET request to the chatbot URL with the `message` query parameters. For example, if your chatbot is running on Google Cloud Run, you can create a command with the following URL:
+To use the chatbot with Nightbot, you can create two custom commands to send a GET request to the chatbot URL with the `message` query parameters. For example, if your chatbot is running on Google Cloud Run, you can create a command with the following URL:
 
-```
-MrDestructoid < $(urlfetch <url-to-api>/ai?message=$(querystring))
-```
+* First command: `!ai` whose alise is set to `_ai`
+   ```
+   $(twitch $(user) "{{displayName}}"): $(query)
+   ```
+* Second command: `_ai`
+   ```
+   MrDestructoid < $(urlfetch <url-to-api>/ai?message=$(querystring))
+   ```
 
 Replace `<url-to-api>` with the URL to your chatbot API.
